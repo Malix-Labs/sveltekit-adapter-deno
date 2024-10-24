@@ -57,7 +57,7 @@ The following environment variables can be used to change the port and hostname:
 PORT=5678 HOST=0.0.0.0 deno run --allow-env --allow-read --allow-net mod.ts
 ```
 
-The default port is `8000` and the default hostname is `127.0.0.1`.
+The default port is `8000` and the default hostname is `0.0.0.0`.
 
 ## Adapter options
 

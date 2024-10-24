@@ -1,5 +1,5 @@
 import { serveDir, serveFile } from "file_server";
-import { dirname, extname, join, fromFileUrl } from "path";
+import { dirname, extname, fromFileUrl, join } from "path";
 
 import server from "SERVER";
 
@@ -18,8 +18,8 @@ Deno.serve(
   },
   async (request: Request, info: Deno.ServeHandlerInfo): Promise<Response> => {
     // Get client IP address
-    const clientAddress =
-      request.headers.get("x-forwarded-for") ?? info.remoteAddr.hostname;
+    const clientAddress = request.headers.get("x-forwarded-for") ??
+      info.remoteAddr.hostname;
 
     const { pathname } = new URL(request.url);
 
@@ -42,7 +42,7 @@ Deno.serve(
     if (!slashed && !extname(pathname) && prerendered.has(pathname)) {
       const response = await serveFile(
         request,
-        join(rootDir, `${pathname}.html`)
+        join(rootDir, `${pathname}.html`),
       );
       if (response.ok || response.status === 304) {
         return response;
@@ -61,7 +61,7 @@ Deno.serve(
       ) {
         response.headers.set(
           "cache-control",
-          "public, max-age=31536000, immutable"
+          "public, max-age=31536000, immutable",
         );
       }
       return response;
@@ -73,5 +73,5 @@ Deno.serve(
     return server.respond(request, {
       getClientAddress: () => clientAddress,
     });
-  }
+  },
 );
