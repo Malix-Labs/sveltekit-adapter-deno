@@ -1,9 +1,6 @@
 # sveltekit-adapter-deno
 
-[Adapter](https://svelte.dev/docs/kit/adapters) for
-[SvelteKit](https://svelte.dev/docs/kit/introduction) apps that generates a standalone
-[Deno](https://deno.com/) or [Deno Deploy](https://deno.com/deploy)
-server.
+[Adapter](https://svelte.dev/docs/kit/adapters) for [SvelteKit](https://svelte.dev/docs/kit/introduction) apps that generates a standalone [Deno](https://deno.com/) or [Deno Deploy](https://deno.com/deploy) server.
 
 ## Usage
 
@@ -13,11 +10,10 @@ Install in your SvelteKit project:
 deno add npm:sveltekit-adapter-deno
 ```
 
-Add the adapter to your
-[SvelteKit configuration](https://svelte.dev/docs/kit/configuration).
+Add the adapter to your [SvelteKit configuration](https://svelte.dev/docs/kit/configuration).
 
+`svelte.config.js`
 ```js
-// svelte.config.js
 import adapter from "sveltekit-adapter-deno";
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -40,8 +36,7 @@ deno run -A mod.ts
 
 For Deno Deploy set the entry point to `mod.ts`.
 
-See the [GitHub Action workflow](/.github/workflows/ci.yml) for automated
-deployment.
+See the [GitHub Action workflow](/.github/workflows/ci.yml) for automated deployment.
 
 Using [deployctl](https://docs.deno.com/deploy/manual/deployctl/):
 
@@ -61,14 +56,9 @@ The default port is `8000` and the default hostname is `0.0.0.0`.
 
 ## Adapter options
 
-See the [TypeScript definition](/index.d.ts) for `AdapterOptions`. You can
-specify the build output directory and provide additional esbuild options.
+See the [TypeScript definition](/index.d.ts) for `AdapterOptions`. You can specify the build output directory and provide additional esbuild options.
 
-The `usage` option is used to determine where the current directory is (this is
-needed for the static and prerendered files). The default is `usage: 'deno'`
-which uses the `import.meta.url` to get the current directory. If you want to
-compile the result with `deno compile` you should use `usage: 'deno-compile'`
-which uses `Deno.execPath()` to get the current directory.
+The `usage` option is used to determine where the current directory is (this is needed for the static and prerendered files). The default is `usage: 'deno'` which uses the `import.meta.url` to get the current directory. If you want to compile the result with `deno compile` you should use `usage: 'deno-compile'` which uses `Deno.execPath()` to get the current directory.
 
 ## Node and NPM modules
 
