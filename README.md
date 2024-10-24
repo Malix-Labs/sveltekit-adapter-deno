@@ -10,7 +10,7 @@ server.
 Install in your SvelteKit project:
 
 ```sh
-npm install --save-dev sveltekit-adapter-deno
+deno add npm:sveltekit-adapter-deno
 ```
 
 Add the adapter to your
