@@ -1,8 +1,8 @@
 # sveltekit-adapter-deno
 
-[Adapter](https://kit.svelte.dev/docs/adapters) for
-[SvelteKit](https://kit.svelte.dev/) apps that generates a standalone
-[Deno](https://deno.com/runtime) or [Deno Deploy](https://deno.com/deploy)
+[Adapter](https://svelte.dev/docs/kit/adapters) for
+[SvelteKit](https://svelte.dev/docs/kit/introduction) apps that generates a standalone
+[Deno](https://deno.com/) or [Deno Deploy](https://deno.com/deploy)
 server.
 
 ## Usage
@@ -14,7 +14,7 @@ deno add npm:sveltekit-adapter-deno
 ```
 
 Add the adapter to your
-[SvelteKit configuration](https://kit.svelte.dev/docs/configuration).
+[SvelteKit configuration](https://svelte.dev/docs/kit/configuration).
 
 ```js
 // svelte.config.js
@@ -35,7 +35,7 @@ Build the app for production (`npm run build`).
 Serve with Deno from the build directory:
 
 ```sh
-deno run --allow-env --allow-read --allow-net mod.ts
+deno run -A mod.ts
 ```
 
 For Deno Deploy set the entry point to `mod.ts`.
@@ -43,7 +43,7 @@ For Deno Deploy set the entry point to `mod.ts`.
 See the [GitHub Action workflow](/.github/workflows/ci.yml) for automated
 deployment.
 
-Using [deployctl](https://deno.com/deploy/docs/deployctl):
+Using [deployctl](https://docs.deno.com/deploy/manual/deployctl/):
 
 ```sh
 deployctl deploy --project=demo --import-map=import_map.json mod.ts
@@ -54,7 +54,7 @@ deployctl deploy --project=demo --import-map=import_map.json mod.ts
 The following environment variables can be used to change the port and hostname:
 
 ```sh
-PORT=5678 HOST=0.0.0.0 deno run --allow-env --allow-read --allow-net mod.ts
+PORT=5678 HOST=0.0.0.0 deno run -A mod.ts
 ```
 
 The default port is `8000` and the default hostname is `0.0.0.0`.
