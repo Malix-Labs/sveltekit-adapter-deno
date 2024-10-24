@@ -1,5 +1,5 @@
-import { serveDir, serveFile } from "file_server";
-import { dirname, extname, fromFileUrl, join } from "path";
+import { serveDir, serveFile } from "jsr:@std/http@1/file-server";
+import { dirname, extname, fromFileUrl, join } from "jsr:@std/path@1";
 
 import server from "SERVER";
 
@@ -16,7 +16,7 @@ Deno.serve(
     port: Number.parseInt(Deno.env.get("PORT") ?? "8000"),
     hostname: Deno.env.get("HOST") ?? "0.0.0.0",
   },
-  async (request: Request, info: Deno.ServeHandlerInfo): Promise<Response> => {
+  async (request: Request, info: Deno.ServeHandlerInfo<Deno.NetAddr>): Promise<Response> => {
     // Get client IP address
     const clientAddress = request.headers.get("x-forwarded-for") ??
       info.remoteAddr.hostname;
